@@ -21,5 +21,8 @@ int	main(){
 	kate++;
 	std::cout << " and " << kate.getName() << ": "
 		<< kate.getGrade() << std::endl;
+	kate--;
+	--jim;
+	std::cout << "oups " << std::endl << kate << " and " << jim << std::endl;
 	return (0);
 }
