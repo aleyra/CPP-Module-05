@@ -38,7 +38,7 @@ protected:
 
 private:
 	std::string const	_name;
-	bool				_signed;//0 = nok and 1 = ok
+	bool				_signed;
 	int const			_sLvl;
 	int	const			_exeLvl;
 

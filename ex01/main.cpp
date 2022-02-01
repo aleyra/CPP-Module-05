@@ -1,20 +1,40 @@
 #include "Bureaucrat.hpp"
 
 int	main(){
-	Bureaucrat bob("bob", 100);
-	Bureaucrat kate("kate", 1);
-	Form A38("A38", 1, 2);
-	Form A39("A39", 0, 151);
-	
-	std::cout << "There is 2 bureaucrats:" << std::endl
-		<< bob << std::endl << kate << std::endl;
-	std::cout <<"and 2 forms:" << std::endl;
-	std::cout << A38 << A39;
-	
-	A38.beSigned(bob);
-	A38.beSigned(kate);
+	try{
+		Form A39("A39", 150, 151);
+	}
+	catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+	try{
+		Form A39("A40", 0, 1);
+	}
+	catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+	try{
+		Form 		A38("A38", 50, 51);
+		Bureaucrat	jim("Jim", 100);
 
-	std::cout << A38;
+		std::cout << A38 << jim << std::endl;
+		jim.signForm(A38);
+		A38.beSigned(jim);
 
+	}
+	catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
+	try{
+		Form 		A38("A38", 50, 51);
+		Bureaucrat	kate("Kate", 50);
+
+		std::cout << A38 << kate << std:: endl;
+		A38.beSigned(kate);
+		kate.signForm(A38);
+	}
+	catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

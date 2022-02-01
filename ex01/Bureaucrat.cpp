@@ -9,24 +9,14 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src){
 
 Bureaucrat::Bureaucrat(const std::string name,const int grade){
 	this->_name = name;
-	try{
-		if (grade > 150){
-			throw Bureaucrat::GradeTooLowException();
-		}
-		else if (grade < 1){
-			throw Bureaucrat::GradeTooHighException();
-		}
-		else
-			this->_grade = grade;
+	if (grade > 150){
+		throw Bureaucrat::GradeTooLowException();
 	}
-	catch (Bureaucrat::GradeTooHighException &e){
-		this->_grade = 1;
-		std::cerr << e.what() << std::endl;
+	else if (grade < 1){
+		throw Bureaucrat::GradeTooHighException();
 	}
-	catch (Bureaucrat::GradeTooLowException &e){
-		this->_grade = 150;
-		std::cerr << e.what() << std::endl;
-	}
+	else
+		this->_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(){
@@ -46,55 +36,22 @@ int	Bureaucrat::getGrade() const{
 	return(this->_grade);
 }
 
-Bureaucrat	Bureaucrat::operator++(){
-	try{
-		if (this->getGrade() == 1)
-			throw Bureaucrat::GradeTooHighException();
-		else
-			this->_grade--;
-	}
-	catch(Bureaucrat::GradeTooHighException &e){
-		this->_grade = 1;
-		std::cerr << e.what() << std::endl;
-	}
-	return (*this);
+void	Bureaucrat::incrementGrade(){
+	if (this->_grade != 1)
+		this->_grade--;
 }
 
-Bureaucrat	Bureaucrat::operator++(int ){
-	Bureaucrat	t(*this);
-
-	this->operator++();
-	return(t);
+void	Bureaucrat::decrementGrade(){
+	if (this->_grade != 150)
+		this->_grade++;
 }
 
-Bureaucrat	Bureaucrat::operator--(){
-	try{
-		if (this->getGrade() == 150)
-			throw Bureaucrat::GradeTooLowException();
-		else
-			this->_grade++;
-	}
-	catch(Bureaucrat::GradeTooLowException &e){
-		this->_grade = 150;
-		std::cerr << e.what() << std::endl;
-	}
-	return (*this);
-}
-
-Bureaucrat	Bureaucrat::operator--(int ){
-	Bureaucrat	t(*this);
-
-	this->operator--();
-	return(t);
-}
-
-void	Bureaucrat::beSigned(Form const &f){
-	std::cout << this->getName();
-	if (f.getSigned() == 1)
-		std::cout << " signs " << f.getName();
+void	Bureaucrat::signForm(Form const &f){
+	if (f.getSigned() == true)
+		std::cout << this->_name << " signs " << f.getName() << std::endl;
 	else
-		std::cout << " cannot sign because his grade is too low";
-	std::cout << std::endl;
+		std::cout << this->_name << " cannot sign because "
+			<< this->_name << "'s grade is too low\n"; 
 }
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &bc){

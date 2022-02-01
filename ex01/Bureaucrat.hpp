@@ -3,7 +3,7 @@
 
 # include <iostream>
 # include <string>
-#include "Form.hpp"
+# include "Form.hpp"
 
 class Form;
 
@@ -18,32 +18,30 @@ public:
 
 	std::string const	&getName() const;
 	int 				getGrade() const;
-	Bureaucrat		operator++();
-	Bureaucrat		operator++(int );
-	Bureaucrat		operator--();
-	Bureaucrat		operator--(int );
-
-	void			beSigned(Form const &f);
+	void				incrementGrade();
+	void				decrementGrade();
+	void				signForm(Form const &f);
 
 	class GradeTooHighException : public std::exception{
 		public:
 			virtual const char* what() const throw(){
-				return("Grade too High, grade set at 1");
+				return("Grade too High");
 			}
 	};
 
 	class GradeTooLowException : public std::exception{
 		public:
 			virtual const char* what() const throw(){
-				return("Grade too low, grade set at 150");
+				return("Grade too low");
 			}
 	};
 
 protected:
-
-private:
 	std::string	_name;
 	int			_grade;
+
+private:
+
 };
 
 	std::ostream	&operator<<(std::ostream &o, Bureaucrat const &bc);
