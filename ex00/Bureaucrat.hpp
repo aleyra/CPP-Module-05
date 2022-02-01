@@ -15,22 +15,20 @@ public:
 
 	std::string const	&getName() const;
 	int 				getGrade() const;
-	Bureaucrat		operator++();
-	Bureaucrat		operator++(int );
-	Bureaucrat		operator--();
-	Bureaucrat		operator--(int );
+	void				incrementGrade();
+	void				decrementGrade();
 
 	class GradeTooHighException : public std::exception{
 		public:
 			virtual const char* what() const throw(){
-				return("Grade too High, grade set at 1");
+				return("Grade too High");
 			}
 	};
 
 	class GradeTooLowException : public std::exception{
 		public:
 			virtual const char* what() const throw(){
-				return("Grade too low, grade set at 150");
+				return("Grade too low");
 			}
 	};
 
