@@ -28,6 +28,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &bc) const{
 	else{
 		std::default_random_engine re;
 		std::uniform_int_distribution<int> i{0, 1};
+			std::cout << "[Drill Noises]\t";
 		if (i(re) == 0)
 			std::cout << this->_target << " as been robotomized successfully\n";
 		else
