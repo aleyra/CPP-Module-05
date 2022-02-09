@@ -50,7 +50,7 @@ void	Bureaucrat::signForm(Form const &f){
 	if (f.getSigned() == true)
 		std::cout << this->_name << " signs " << f.getName() << std::endl;
 	else
-		std::cout << this->_name << " cannot sign because "
+		std::cout << this->_name << " cannot sign " << f.getName() << " because "
 			<< this->_name << "'s grade is too low\n"; 
 }
 
