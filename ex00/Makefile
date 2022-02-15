@@ -12,7 +12,7 @@ OBJS		=	$(addprefix $(PATH_OBJ)/, $(SRCS:.cpp=.o))
 INCS		=	Bureaucrat.hpp
 
 # Commands of compilation
-COMP		=	clang++
+COMP		=	c++
 COMP_FLAG	=	-Wall -Werror -Wextra
 
 # Others Command
