@@ -20,8 +20,7 @@ Form::Form(Form const &src):_name(src._name), _sLvl(src._sLvl), _exeLvl(src._exe
 	*this = src;
 }
 
-Form::~Form(){
-}
+Form::~Form(){}
 
 Form&	Form::operator=(Form const &src){
 	this->_signed = src.getSigned();

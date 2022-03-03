@@ -1,14 +1,12 @@
 #include "Intern.hpp"
 
-Intern::Intern(){
-}
+Intern::Intern(){}
 
 Intern::Intern(Intern const &src){
 	*this = src;
 }
 
-Intern::~Intern(){
-}
+Intern::~Intern(){}
 
 Intern	&Intern::operator=(Intern const &src){
 	(void)src;

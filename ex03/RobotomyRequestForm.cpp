@@ -12,8 +12,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("Robotomy_Req
 	this->_target = target;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm(){
-}
+RobotomyRequestForm::~RobotomyRequestForm(){}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &src){
 	this->_target = src._target;
@@ -21,15 +20,15 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &s
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const &bc) const{
+	std::srand(time(NULL));
+	int	rand = std::rand() % 2;
 	if (this->getSigned() == false)
 		throw Form::NotSignedException();
 	else if (bc.getGrade() > this->getExeLvl())
 		throw Form::GradeTooLowException();
 	else{
-		std::default_random_engine re;
-		std::uniform_int_distribution<int> i{0, 1};
 			std::cout << "[Drill Noises]\t";
-		if (i(re) == 0)
+		if (rand)
 			std::cout << this->_target << " as been robotomized successfully\n";
 		else
 			std::cout << "Robotomy of " << this->_target << " failed\n";

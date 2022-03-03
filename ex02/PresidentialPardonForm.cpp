@@ -12,8 +12,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("Presid
 	this->_target = target;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(){
-}
+PresidentialPardonForm::~PresidentialPardonForm(){}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &src){
 	this->_target = src._target;
@@ -26,5 +25,5 @@ void	PresidentialPardonForm::execute(Bureaucrat const &bc) const{
 	else if (bc.getGrade() > this->getExeLvl())
 		throw Form::GradeTooLowException();
 	else
-		std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
+		std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

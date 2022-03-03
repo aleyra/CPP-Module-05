@@ -9,7 +9,6 @@ class Form;
 
 class Bureaucrat {
 public:
-	Bureaucrat();
 	Bureaucrat(Bureaucrat const &src);
 	Bureaucrat(const std::string name,const int grade);
 	virtual ~Bureaucrat();
@@ -38,9 +37,11 @@ public:
 	};
 
 protected:
-	std::string	_name;
+	std::string const	_name;
 	int			_grade;
 
+	Bureaucrat();
+	
 private:
 
 };
